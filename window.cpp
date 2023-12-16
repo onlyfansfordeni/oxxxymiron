@@ -1,5 +1,4 @@
 #include "window.hpp"
-#include "game.hpp"
 
 // 123
 
@@ -42,12 +41,6 @@ void Window::set_values()
     coords = {{50, 150}, {50, 300}, {50, 450}, {50, 600}};
     sizes = {100, 100, 100, 100};
 
-    sf::CircleShape shapehi(50);
-    shapehi.setFillColor(sf::Color::Red);
-
-    sf::CircleShape shapeha(50);
-    shapeha.setFillColor(sf::Color::Blue);
-
     for (std::size_t i{}; i<texts.size(); i++)
     {
         texts[i].setFont(*font);
@@ -56,6 +49,26 @@ void Window::set_values()
         texts[i].setFillColor(sf::Color::White);
         texts[i].setPosition(coords[i]);
     }
+
+    sf::RectangleShape rectanglex1;
+    rectanglex1.setSize (sf::Vector2f(1, 902));
+    rectanglex1.setOutlineThickness(0);
+    rectanglex1.setPosition(300, 0);
+
+    sf::RectangleShape rectanglex2;
+    rectanglex2.setSize (sf::Vector2f(1, 902));
+    rectanglex2.setOutlineThickness(0);
+    rectanglex2.setPosition(601, 0);
+
+    sf::RectangleShape rectangley1;
+    rectangley1.setSize (sf::Vector2f(902, 1));
+    rectangley1.setOutlineThickness(0);
+    rectangley1.setPosition(0, 300);
+
+    sf::RectangleShape rectangley2;
+    rectangley2.setSize (sf::Vector2f(902, 1));
+    rectangley2.setOutlineThickness(0);
+    rectangley2.setPosition(0, 601);
 
 }
 
@@ -94,6 +107,15 @@ void Window::loop_events()
     }
 }
 
+void Window::draw_game()
+{
+    window->clear(sf::Color::Green);
+
+
+
+    window->display();
+}
+
 void Window::draw_all()
 {
     window->clear(sf::Color::Cyan);
@@ -113,10 +135,11 @@ void Window::draw_all()
     {
         case State::GAME:
             window->draw(shapehi);
-            Game::draw_game();
+            draw_game();
             break;
         case State::EXIT:
             window->draw(shapeha);
+            window->close();
             break;
     }
 

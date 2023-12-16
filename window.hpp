@@ -8,8 +8,6 @@
 
 class Window
 {
-    int pos;
-
     sf::RenderWindow * window;
     sf::RectangleShape * shape;
     sf::Font * font;
@@ -18,6 +16,8 @@ class Window
     std::vector<sf::Vector2f> coords;
     std::vector<sf::Text> texts;
     std::vector<std::size_t> sizes;
+
+    
 
     protected:
         void set_values();
@@ -28,4 +28,5 @@ class Window
         Window();
         ~Window();
         void run_menu();
+        void draw_game();
 };
